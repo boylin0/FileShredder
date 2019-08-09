@@ -1,0 +1,36 @@
+﻿<Page x:Class="fileShredder.page.main"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:mControl = "clr-namespace:fileShredder.controls" 
+      xmlns:local="clr-namespace:fileShredder.page"
+      mc:Ignorable="d"
+      Title="main" Height="475.648" Width="462.296">
+
+    <Grid>
+        <TabControl Margin="10">
+            <TabItem Header="刪除檔案">
+                <Grid x:Name="tab_shredFile" Background="#FF252525">
+                    <Label Content="按下[處理檔案]以進行檔案粉碎處理" Height="83" Margin="10,10,10,0" VerticalAlignment="Top" Background="#FF2E2E2E"/>
+                    <Button  Style="{DynamicResource SquareButtonStyle}" x:Name="pickfile" Click="pickfile_Click" Content="選擇檔案" Margin="10,0,0,30" FontSize="14" FontWeight="Normal" Height="34" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="101" Focusable="False" BorderBrush="#FF505050"/>
+                    <ListBox DragDrop.Drop="Queuelist_Drop" x:Name="queuelist" Margin="10,168,10,76" Background="#FF343434" FontSize="12" AllowDrop="True"/>
+                    <Label Content="列隊中的檔案:" HorizontalAlignment="Left" Height="30" Margin="10,98,0,0" VerticalAlignment="Top" Width="126"/>
+                    <Button Style="{DynamicResource SquareButtonStyle}" Content="刪除檔案" Margin="0,0,10,30" FontSize="14" FontWeight="Normal" Height="34" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="126" Click="StartRemove_Click" Focusable="False" BorderBrush="#FF505050"/>
+                    <Button Style="{DynamicResource SquareButtonStyle}" x:Name="cleanList" Click="CleanList_Click" Content="清空列表" Height="34" Margin="0,124,10,0" VerticalAlignment="Top" FontWeight="Normal" HorizontalAlignment="Right" Width="80" FontSize="14" Focusable="False" BorderBrush="#FF505050"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="設定">
+                <Grid x:Name="tab_settings" Background="#FF252525">
+                    <CheckBox x:Name="checkbox_systemrightmenu" Click="Checkbox_systemrightmenu_Click" Content="啟用系統右鍵選單快捷" HorizontalAlignment="Left" Margin="10,14,0,0" VerticalAlignment="Top" FontSize="16" IsEnabled="False"/>
+                    <Button x:Name="testbutton" Click="Testbutton_Click" Content="test" Margin="0,32,43,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="75" Visibility="Hidden"/>
+                </Grid>
+            </TabItem>
+        </TabControl>
+        <mControl:CircularProgressBar x:Name="pbar" HorizontalAlignment="Center" VerticalAlignment="Center"
+              Percentage="100" Radius="100" SegmentColor="#026873" StrokeThickness="10" Height="220"  Width="220" Margin="0"/>
+        <Label x:Name="percentageLabel" Content="100%" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="36" Margin="0"/>
+        <Label x:Name="currentfileLabel" Content="處理檔案: ###" Margin="0,260,0,0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+
+    </Grid>
+</Page>
